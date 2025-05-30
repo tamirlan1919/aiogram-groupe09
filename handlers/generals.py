@@ -3,16 +3,17 @@ from aiogram.types import Message
 from aiogram.filters import Command
 
 
+
 router = Router()
 
 @router.message(Command("start"))
 async def cmd_start(message: Message):
     kb = [
-        [types.KeyboardButton(text='C пюрешкой'), types.KeyboardButton(text='С макарошками')],
-        [types.KeyboardButton(text='С рисом')],
+        [types.KeyboardButton(text='Погода'), types.KeyboardButton(text='Новости')],
+        [types.KeyboardButton(text='Курс валют')],
     ]
-    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True, input_field_placeholder='Выбери порцию')
-    await message.answer('Как подавать катлеты?',
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+    await message.answer('Выберите опцию:',
                          reply_markup=keyboard)
 
 
